@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>PROJECT: ROCK PAPER SCISSORS</title>
+</head>
+<body>
+    <script>
+
+        // Computer move
+
+        function computerPlays() {
+            let num = Math.floor((Math.random() * 3) + 1);
+            if (num == 1) {
+                 return "Rock"
+             } 
+            else if (num == 2) {
+                return "Paper"
+            } 
+            else if (num == 3) {
+                return "Scissors"
+            }
+        }
+
+        
+       //One Round
+        let computerScore = 0;
+        let userScore = 0 ;
+        
+       function playRound(playerSelection, computerSelection) {
+        // Player Selection has only the first character in upper case.
+        playerSelection = playerSelection.toLowerCase();
+        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+        //Checking each case and returning the winner or loser from player perspective.
+        if (playerSelection == computerSelection) {
+            return "This is a draw, no one won"
+        }
+        else if (playerSelection == "Rock" && computerSelection == "Paper") {
+            computerScore = computerScore + 1 ;
+            return "You Lose! Paper beats Rock"
+        }
+        else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+            userScore = userScore + 1;
+            return "You Win! Rock beats Scissors"
+        }
+        else if (playerSelection == "Paper" && computerSelection == "Rock") {
+            userScore = userScore + 1;
+            return "You Win! Paper beats Rock"
+        }
+        else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+            computerScore = computerScore + 1 ;
+            return "You Lose! Scissors beats Paper"
+        }
+        else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+            userScore = userScore + 1;
+            return "You Win! Scissors beats Paper"
+        }
+        else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+            computerScore = computerScore + 1 ;
+            return "You Lose! Rock beats Scissors"
+        }
+       }
+
+       //Function for one Game
+       //The one who gets to 5 wins.
+
+       function game() {
+        //Making score zero so game can be restarted.
+        computerScore = 0;
+        userScore = 0 ;
+
+        //While loop instead of FOR as draw gives zero point
+        while (computerScore < 5 &&  userScore < 5 ) {
+            let selection = prompt("Please enter your MOVE  ")
+            computerSelection = computerPlays();
+
+            console.log(playRound(selection , computerSelection))
+            console.log(computerScore)
+            console.log(userScore)
+        }
+
+        if (computerScore > userScore) {
+            console.log("The computer won the game")
+        }
+        else {
+            console.log("The user won the game")
+        }
+        
+       }
+
+
+
+    </script>
+</body>
+</html>
