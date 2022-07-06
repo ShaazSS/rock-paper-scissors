@@ -1,97 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>PROJECT: ROCK PAPER SCISSORS</title>
+    <title>Rock Paper Scissors</title>
+    <script src ="script.js" async></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel = "stylesheet" href= "https://fonts.googleapis.com/css?family=Gloria+Hallelujah">
 </head>
 <body>
-    <script>
-
-        // Computer move
-
-        function computerPlays() {
-            let num = Math.floor((Math.random() * 3) + 1);
-            if (num == 1) {
-                 return "Rock"
-             } 
-            else if (num == 2) {
-                return "Paper"
-            } 
-            else if (num == 3) {
-                return "Scissors"
-            }
-        }
-
-        
-       //One Round
-        let computerScore = 0;
-        let userScore = 0 ;
-        
-       function playRound(playerSelection, computerSelection) {
-        // Player Selection has only the first character in upper case.
-        playerSelection = playerSelection.toLowerCase();
-        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-        //Checking each case and returning the winner or loser from player perspective.
-        if (playerSelection == computerSelection) {
-            return "This is a draw, no one won"
-        }
-        else if (playerSelection == "Rock" && computerSelection == "Paper") {
-            computerScore = computerScore + 1 ;
-            return "You Lose! Paper beats Rock"
-        }
-        else if (playerSelection == "Rock" && computerSelection == "Scissors") {
-            userScore = userScore + 1;
-            return "You Win! Rock beats Scissors"
-        }
-        else if (playerSelection == "Paper" && computerSelection == "Rock") {
-            userScore = userScore + 1;
-            return "You Win! Paper beats Rock"
-        }
-        else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-            computerScore = computerScore + 1 ;
-            return "You Lose! Scissors beats Paper"
-        }
-        else if (playerSelection == "Scissors" && computerSelection == "Paper") {
-            userScore = userScore + 1;
-            return "You Win! Scissors beats Paper"
-        }
-        else if (playerSelection == "Scissors" && computerSelection == "Rock") {
-            computerScore = computerScore + 1 ;
-            return "You Lose! Rock beats Scissors"
-        }
-       }
-
-       //Function for one Game
-       //The one who gets to 5 wins.
-
-       function game() {
-        //Making score zero so game can be restarted.
-        computerScore = 0;
-        userScore = 0 ;
-
-        //While loop instead of FOR as draw gives zero point
-        while (computerScore < 5 &&  userScore < 5 ) {
-            let selection = prompt("Please enter your MOVE  ")
-            computerSelection = computerPlays();
-
-            console.log(playRound(selection , computerSelection))
-            console.log(computerScore)
-            console.log(userScore)
-        }
-
-        if (computerScore > userScore) {
-            console.log("The computer won the game")
-        }
-        else {
-            console.log("The user won the game")
-        }
-        
-       }
-
-
-
-    </script>
+    <h1>Rock Paper Scissors</h1>
+    <h2>First to 5 Wins!</h2>
+    <div class="buttons">
+        <button class="btn" id="rock"><img src="images/rock.png" alt="rock image"/></button>
+        <button class="btn" id="paper"><img src="images/paper.png" alt="paper image"/></button>
+        <button class="btn" id="scissors"><img src="images/scissors.png" alt="scissors image"/></button>
+    </div>
+    <div class="text-line">
+    <p class="text" id="player-score">Player Score:</p>
+    <p class="text" id="comp-score">Computer Score:</p>
+    </div>
+    <div>
+        <p class="text" id="output">May the Best Person Win!</p>
+    </div>
 </body>
 </html>
