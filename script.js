@@ -8,10 +8,10 @@ let playerScore = 0;
 let compScore = 0;
 
 const player = document.querySelector("#player-score");
-player.textContent = `Player Score: ${playerScore}`;
+player.textContent = `Player Scores: ${playerScore}`;
 
 const computer = document.querySelector("#comp-score");
-computer.textContent = `Computer Score: ${compScore}`;
+computer.textContent = `Computer Scores: ${compScore}`;
 
 const output = document.querySelector("#output");
 output.textContent = "May the Best Person Win!"
